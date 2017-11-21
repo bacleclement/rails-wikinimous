@@ -3,17 +3,17 @@
   <%= f.text_field :title %>
 
   <%= f.label :content %>
-  <% f.text_field :content, id="input"%>
+  <%= f.hidden_field :content, id: "input"%>
 
   <div id="editor">some text</div>
   <script src="src/ace.js" type="text/javascript" charset="utf-8"></script>
   <script>
     var editor = ace.edit("editor");
-    const editorInput = editor.getElementById('editor')
+    const editorInput = document.getElementById('editor');
     editorInput.addEventListener('keyup', (event) => {
-
-    })
-
+      const inputContent = document.getElementById('input');
+      inputContent.value = document.querySelector('.ace_content').innerText;
+    });
   </script>
 
   <%= f.submit %>
