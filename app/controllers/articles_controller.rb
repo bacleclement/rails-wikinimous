@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   def show # GET /articles/:id
+    @text = Kramdown::Document.new(@article.content).to_html.html_safe
   end
 
   def new # GET /articles/new
