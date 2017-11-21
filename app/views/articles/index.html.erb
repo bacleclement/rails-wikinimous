@@ -1,0 +1,12 @@
+<h1>Articles</h1>
+<% @articles.each do |article| %>
+  <p><%= article[:title]%> : <%= article[:content]%></p>
+  <%= link_to "En savoir plus", article_path(article) %>
+  <%= link_to "Delete this task", article_path(article),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+<% end %>
+
+<br>
+<%= link_to "Add a article", new_article_path %>
+
